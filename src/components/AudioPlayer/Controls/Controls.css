@@ -1,0 +1,44 @@
+.control-wrapper {
+	display: flex;
+	justify-content: space-between;
+	width: 60%;
+	margin: auto;
+}
+
+.control-button {
+	display: flex;
+	width: 50px;
+	height: 50px;
+	border-radius: 20px;
+	align-items: center !important;
+	margin: auto;
+	justify-content: center !important;
+	cursor: pointer;
+	transition: 0.3s ease-in-out;
+}
+
+.control-button:hover {
+	transform: scale(1.1);
+}
+
+.play-toggle-button {
+	display: flex;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	background-color: #ea5454c0;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background: #ea5454c0;
+	box-shadow: inset -4px -4px 10px #983922, inset 4px 4px 10px 1px #ffae9a;
+}
+
+.play-toggle-button.active {
+	background: #ea5454c0;
+	box-shadow: inset -4px -4px 10px #ffae9a, inset 4px 4px 10px 1px #753d30;
+}
+
+.play-toggle-button:hover {
+	transform: scale(1.1);
+}

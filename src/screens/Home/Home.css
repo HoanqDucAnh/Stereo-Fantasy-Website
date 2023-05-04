@@ -1,0 +1,14 @@
+.main-body {
+	height: 100%;
+	width: 100%;
+	border-radius: 30px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	display: flex;
+	background-color: #ea5454c0;
+	position: relative;
+}
+
+.main-body::-webkit-scrollbar {
+	display: none;
+}

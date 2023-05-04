@@ -1,0 +1,154 @@
+.overall-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	border-radius: 30px;
+	background-color: #101013;
+	opacity: 1;
+	background-image: repeating-radial-gradient(
+			circle at 0 0,
+			transparent 0,
+			#101013 25px
+		),
+		repeating-linear-gradient(#002b5b55, #002b5b);
+}
+
+.profile-container {
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+	margin-top: 20px;
+	height: 30%;
+	width: 70%;
+	background-color: rgba(1, 36, 75, 0.8);
+	border-radius: 30px;
+}
+
+.profile-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 40%;
+	height: 100%;
+	border-right: white 2px solid;
+	padding-bottom: 20px;
+	/* background-color: #002b5b; */
+}
+
+#profile-name {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 0;
+	padding-top: 2px;
+	padding-bottom: 5px;
+	color: aliceblue;
+}
+
+#profile-img {
+	width: 65%;
+	aspect-ratio: 1;
+	border-radius: 20px;
+}
+
+.profile-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 60%;
+	height: 100%;
+	color: aliceblue;
+	border-radius: 30px;
+}
+
+#profile-followers {
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	height: 50%;
+	margin-bottom: 0;
+}
+
+#profile-genres {
+	font-size: 20px;
+	font-weight: 400;
+	text-align: center;
+	height: 50%;
+	padding: 5px;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 55%;
+	border-radius: 30px;
+}
+
+.content-title {
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: aliceblue;
+	margin: 20px;
+	padding-top: 10px;
+}
+
+.content-body {
+	height: 100%;
+	width: 94%;
+	padding: 3%;
+	padding-top: 0;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.content-card {
+	position: relative;
+	width: 15%;
+	/* height: 40%; */
+	padding: 1%;
+	margin-bottom: 2%;
+	border: 1px solid #ffffffa5;
+	border-radius: 20px;
+	background: rgb(58, 58, 69);
+	background: linear-gradient(
+		90deg,
+		rgba(58, 58, 69, 0.5) 26%,
+		rgba(0, 43, 91, 1) 96%
+	);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: 0.3s ease-in-out;
+	cursor: pointer;
+}
+
+.content-img {
+	width: 100%;
+	aspect-ratio: 1;
+	border-radius: 15px;
+}
+
+.contentCard-title {
+	font-weight: bold;
+	font-size: 15px;
+	color: white;
+	margin: 6px 0px 6px;
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+.contentCard-subtitle {
+	font-weight: 300;
+	font-size: 12px;
+	margin: 0px;
+	color: aliceblue;
+	opacity: 0.5;
+}
