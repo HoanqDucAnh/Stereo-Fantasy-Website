@@ -152,3 +152,26 @@
 	color: aliceblue;
 	opacity: 0.5;
 }
+
+.playlist-btn {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	padding: 0;
+	padding: 2%;
+	margin: 0;
+	width: 95%;
+	height: 95%;
+	border-radius: 20px;
+	background: rgb(58, 58, 69);
+	background: linear-gradient(
+		90deg,
+		rgba(58, 58, 69, 0.5) 10%,
+		rgba(0, 43, 91, 1) 100%
+	);
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+	transition: 0.5 ease-in-out;
+}

@@ -4,9 +4,18 @@ import { IconContext } from "react-icons";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import APIkit from "../../spotifyauth";
+import { useLocation } from "react-router-dom";
 
 export default function FollowingArtist() {
 	const [following, setFollowing] = useState([]);
+	const navigate = useNavigate();
+	const location = useLocation();
+	const searchParams = new URLSearchParams(location.search);
+	const artistId = searchParams.get("artistId");
+
+	const showArtist = (id) => {
+		navigate("/feed?artistId=" + id);
+	};
 
 	useEffect(() => {
 		APIkit.get("me/following?type=artist")
@@ -37,10 +46,9 @@ export default function FollowingArtist() {
 					<div
 						className="trending-card"
 						key={item.id}
-						// onClick={() => {
-						// 	playTrending(item.id);
-						// 	console.log(item.id);
-						// }}
+						onClick={() => {
+							showArtist(item.id);
+						}}
 					>
 						<img
 							src={item.images[0].url}

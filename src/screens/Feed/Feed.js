@@ -9,21 +9,22 @@ export default function Feed() {
 	const location = useLocation();
 	const [naviArtist, setNaviArtist] = useState([]);
 	const [locationState, setLocationState] = useState(null);
+	const searchParams = new URLSearchParams(location.search);
+	const artistId = searchParams.get("artistId");
 
 	useEffect(() => {
-		if (location.state) {
-			APIkit.get("artists/" + location.state.id)
+		if (artistId) {
+			APIkit.get("artists/" + artistId)
 				.then((response) => {
 					setNaviArtist(response.data);
-					setLocationState(location.state);
 				})
 				.catch((error) => {
 					console.log(error);
 				});
 		}
-	}, [location.state]);
+	}, [artistId]);
 
-	return !locationState ? (
+	return !artistId ? (
 		<FollowingArtist />
 	) : (
 		<NaviArtist artistID={naviArtist.id} />

@@ -39,7 +39,6 @@ export default function AudioPlayer({
 		if (audioRef.current.src) {
 			if (isPlaying) {
 				audioRef.current.play();
-
 				startTimer();
 			} else {
 				clearInterval(intervalRef.current);
@@ -63,9 +62,8 @@ export default function AudioPlayer({
 
 		setTrackProgress(audioRef.current.currentTime);
 
-		if (isReady.current) {
+		if (isReady.current && isPlaying) {
 			audioRef.current.play();
-			// setIsPlaying(true); // This will cause an infinite loop
 			startTimer();
 		} else {
 			isReady.current = true;

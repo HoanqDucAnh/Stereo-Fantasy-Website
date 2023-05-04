@@ -9,22 +9,23 @@ import Widgets from "../../components/Widgets/Widgets";
 import { useParams } from "react-router-dom";
 
 export default function Player() {
-	const location = useLocation();
 	const [tracks, setTracks] = useState([]);
 	const [currentTrack, setCurrentTrack] = useState({});
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const { playlistId } = location.state.id;
+	const location = useLocation();
+	const searchParams = new URLSearchParams(location.search);
+	const playlistId = searchParams.get("playlistId");
 
 	useEffect(() => {
 		apiClient
-			.get("/playlists/" + location.state.id + "/tracks")
+			.get("/playlists/" + playlistId + "/tracks")
 			.then((response) => {
 				setTracks(response.data.items);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-	}, [location.state.id]);
+	}, [playlistId]);
 
 	useEffect(() => {
 		setCurrentTrack(tracks[currentIndex]?.track);
@@ -36,7 +37,6 @@ export default function Player() {
 				<div className="left-player-body">
 					<AudioPlayer
 						currentTrack={currentTrack}
-						// isPlaying={true}
 						setCurrentIndex={setCurrentIndex}
 						total={tracks}
 						currentIndex={currentIndex}

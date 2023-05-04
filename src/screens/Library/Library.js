@@ -17,7 +17,8 @@ export default function Library() {
 	const navigate = useNavigate(); // To navigate to player screen
 
 	const playPlaylist = (id) => {
-		navigate("/player", { state: { id: id } });
+		// navigate(`/player/${id}`, { state: { id: id } });
+		navigate(`/player?playlistId=${id}`);
 	};
 
 	return (

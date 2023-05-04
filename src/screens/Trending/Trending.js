@@ -17,11 +17,11 @@ export default function Trending() {
 	}
 
 	const showArtist = (id) => {
-		navigate("/feed", { state: { id: id } });
+		navigate("/feed?artistId=" + id);
 	};
 
 	const playTrending = (id) => {
-		navigate("/player", { state: { id: id } });
+		navigate("/player?playlistId=" + id);
 	};
 
 	useEffect(() => {

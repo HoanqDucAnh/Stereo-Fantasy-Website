@@ -2,35 +2,40 @@ import React, { useState, useEffect } from "react";
 import APIkit from "../../spotifyauth";
 import { IconContext } from "react-icons";
 import { AiFillPlayCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import "./naviArtist.css";
 
 export default function NaviArtist({ artistID }) {
 	const [naviArtist, setNaviArtist] = useState([]);
 	const [artistAlbum, setArtistAlbum] = useState([]);
+	const navigate = useNavigate();
+	const showAlbum = (id) => {
+		navigate("/player?playlistId=" + id);
+	};
 
 	useEffect(() => {
-		APIkit.get("artists/" + artistID)
-			.then((response) => {
-				setNaviArtist(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		if (artistID) {
+			APIkit.get("artists/" + artistID)
+				.then((response) => {
+					setNaviArtist(response.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
 
-		APIkit.get(
-			"artists/" +
-				artistID +
-				"/albums?offset=0&limit=10&include_groups=album,single&market=US&locale=en-US,en;q=0.9"
-		)
-			.then((response) => {
-				setArtistAlbum(response.data.items);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+			APIkit.get(
+				"artists/" +
+					artistID +
+					"/albums?offset=0&limit=10&include_groups=album,single&market=US&locale=en-US,en;q=0.9"
+			)
+				.then((response) => {
+					setArtistAlbum(response.data.items);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
 	}, [artistID]);
-
-	console.log(artistAlbum);
 
 	return (
 		<>
@@ -64,10 +69,9 @@ export default function NaviArtist({ artistID }) {
 							<div
 								className="content-card"
 								key={item.id}
-								// onClick={() => {
-								// 	playTrending(item.id);
-								// 	console.log(item.id);
-								// }}
+								onClick={() => {
+									showAlbum(item.id);
+								}}
 							>
 								<img
 									src={item.images[0]?.url}
@@ -76,13 +80,13 @@ export default function NaviArtist({ artistID }) {
 								/>
 								<p className="contentCard-title">{item.name}</p>
 								<p className="contentCard-subtitle">{item?.album_type}</p>
-								{/* <div className="play-btn">
+								<div className="play-btn">
 									<IconContext.Provider
 										value={{ color: "#EA5455", size: "50px" }}
 									>
 										<AiFillPlayCircle />
 									</IconContext.Provider>
-								</div> */}
+								</div>
 							</div>
 						))}
 					</div>
